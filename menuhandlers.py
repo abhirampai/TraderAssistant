@@ -3,6 +3,7 @@ import json
 from utils import read_file, print_trade_details, append_to_trading_data, add_or_reduce_stocks
 from badrequest import BadRequest
 from validators import format_date, buy_or_sell, test_stock_details, test_valid_file_name_and_extension
+from constants import errors, success_messages, input_messages
 
 def load_trading_data(trading_data):
     flag = 0
@@ -20,7 +21,7 @@ def load_trading_data(trading_data):
             print(trading_data)
             flag = 1
         except FileNotFoundError:
-            print("Please enter a valid filename.")
+            print(errors["invalid_filename"])
         except BadRequest as Error:
             print(Error)
 
@@ -38,29 +39,29 @@ def load_stock_prices(stock_prices):
         except BadRequest as Error:
             print(Error)
         except:
-            print("Error with file format.")
+            print(errors["invalid_file_format"])
 
 
 def manually_enter_trade(trading_data):
     try:
-        ticker = input("Ticker:\t")
-        flag = buy_or_sell(input("Buy or sell:\t"))
-        quantity = test_stock_details(input("Quantity of stock:\t"), int)
-        cost = test_stock_details(input("Total cost(including brokerage):\t"),
+        ticker = input(input_messages["ticker"])
+        flag = buy_or_sell(input(input_messages["flag"]))
+        quantity = test_stock_details(input(input_messages["quantity"]), int)
+        cost = test_stock_details(input(input_messages["cost"]),
                                   float)
-        date_of_trade = format_date(input("Date:\t"))
+        date_of_trade = format_date(input(input_messages["date_of_trade"]))
         append_to_trading_data(trading_data,
                                [date_of_trade, ticker, flag, quantity, cost])
         print_trade_details(date_of_trade, ticker, flag, quantity, cost)
-        print("Trade added to system")
+        print(success_messages["trade_added"])
     except:
-        print("Error in input")
+        print(errors["input_error"])
 
 
 def view_trading_data(trading_data):
     sorted_data = trading_data.copy()
-    ticker = input("Ticker (leave blank for all):\t")
-    sort_date = input("Sort dates in reverse chronological order? (y/n)\t")
+    ticker = input(input_messages["find_ticker"])
+    sort_date = input(input_messages["sort_date"])
     if sort_date == "y":
         sorted_data.sort(key=lambda trading_data: trading_data[0],
                          reverse=True)
@@ -88,7 +89,7 @@ def view_current_portfolio(trading_data, stock_prices):
             units = add_or_reduce_stocks(flag, 0, quantity)
             value = round(
                 float(units * stock_prices[ticker]),
-                2) if is_stock_price_available else "Current value unknown."
+                2) if is_stock_price_available else errors["value_unknown"]
             portfolio[ticker] = {"units": units, "value": value}
 
     for key in sorted(portfolio.keys()):
@@ -100,9 +101,9 @@ def save_trading_data(trading_data):
     flag = 0
     while flag != 1:
         try:
-            filename = input("Enter filename:")
+            filename = input(input_messages["filename"])
             if not filename.strip():
-                raise BadRequest("Cannot be blank.")
+                raise BadRequest(errors["field_blank"])
             test_valid_file_name_and_extension(filename, "csv")
             with open(filename, 'w', encoding='UTF8') as file:
                 writer = csv.writer(file)
@@ -115,7 +116,7 @@ def save_trading_data(trading_data):
 
 
 def thank_you():
-    print("Thanks for using the Trade Assistant")
+    print(success_messages["thank_you"])
 
 def menu_actions(trading_data, stock_price):
   actions = {

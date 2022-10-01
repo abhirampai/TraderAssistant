@@ -1,9 +1,10 @@
 from badrequest import BadRequest
+from constants import errors, input_messages
 
 def read_file():
-    filename = input("Enter filename:")
+    filename = input(input_messages["filename"])
     if not filename.strip():
-        raise BadRequest("Cannot be blank.")
+        raise BadRequest(errors["field_blank"])
     file = open(filename)
     return file
 
