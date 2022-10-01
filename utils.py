@@ -14,3 +14,9 @@ def print_trade_details(date_of_trade, ticker, flag, quantity, cost):
 
 def append_to_trading_data(trading_data, props):
     trading_data.append(props)
+
+def add_or_reduce_stocks(flag, current_value, quantity):
+    if (flag == "BUY"):
+        return current_value + quantity
+    else:
+        return current_value - quantity
