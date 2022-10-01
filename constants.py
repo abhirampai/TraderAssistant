@@ -32,7 +32,7 @@ success_messages = {
 
 input_messages = {
   "ticker": "Ticker:\t",
-  "flag": "Buy or sell:\t",
+  "flag": "Buy or sell (b/s):\t",
   "quantity": "Quantity of stock:\t",
   "cost": "Total cost(including brokerage):\t",
   "date_of_trade": "Date:\t",
