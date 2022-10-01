@@ -4,7 +4,6 @@ from utils import read_file, print_trade_details, append_to_trading_data
 from badrequest import BadRequest
 from validators import format_date, buy_or_sell, test_stock_details, test_valid_file_name_and_extension
 
-
 def load_trading_data(trading_data):
     flag = 0
     while flag != 1:
