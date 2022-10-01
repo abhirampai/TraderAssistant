@@ -1,9 +1,7 @@
 from menuhandlers import menu_actions
+from constants import welcome_message, menu, errors
 
 def main():
-    welcome_message = """Welcome  to the Trader Assistant
-Programmed by <<Your Name>>"""
-
     print(welcome_message)
     trading_data = []
     stock_price = {}
@@ -11,22 +9,14 @@ Programmed by <<Your Name>>"""
     selected_menu = -1
     while selected_menu != 7:
         try:
-            menu = """Please choose from  the options below 
-1. Load trading data
-2. Load current stock prices
-3. Manually enter a new trade
-4. View trading data
-5. View current portfolio
-6. Save trading data
-7. Quit"""
             print(menu)
             selected_menu = int(input(">>>"))
             if selected_menu not in actions:
-                print("Invalid selection")
+                print(errors["invalid_selection"])
             else:
                 actions[selected_menu]()
         except:
-            print("Something went wrong, Please try again!")
+            print(errors["something_went_wrong"])
 
 
 if __name__ == "__main__":
