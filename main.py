@@ -1,7 +1,7 @@
 import csv
 import time as datetime
 import json
-from utils import read_file, test_valid_file_name_and_extension
+from utils import read_file, test_valid_file_name_and_extension, print_trade_details
 
 class BadRequest(Exception):
 
@@ -76,8 +76,8 @@ def manually_enter_trade(trading_data):
                                   float)
         date_of_trade = format_date(input("Date:\t"))
         trading_data.append([date_of_trade, ticker, flag, quantity, cost])
-        print('{0}\t{1}\t{2}\t{3} for $\t{4}'.format(date_of_trade, ticker, flag, quantity,
-                                                cost))
+        print_trade_details(date_of_trade, ticker, flag, quantity,
+                                                cost)
         print("Trade added to system")
     except:
         print("Error in input")
@@ -95,8 +95,8 @@ def view_trading_data(trading_data):
             if ticker in filtered_data
         ]
     for [date_of_trade, ticker, flag, quantity, cost] in sorted_data:
-        print('{0}\t{1}\t{2}\t{3} for $\t{4}'.format(date_of_trade, ticker, flag, quantity,
-                                                cost))
+        print_trade_details(date_of_trade, ticker, flag, quantity,
+                                                cost)
 
 def add_or_reduce_stocks(flag, current_value, quantity):
   if(flag == "BUY"):
