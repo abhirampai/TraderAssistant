@@ -1,29 +1,8 @@
 import csv
-import time as datetime
 import json
-from utils import read_file, test_valid_file_name_and_extension, print_trade_details, append_to_trading_data
+from utils import read_file, print_trade_details, append_to_trading_data
 from badrequest import BadRequest
-
-def buy_or_sell(flag):
-    if (flag == "b"):
-        return "BUY"
-    elif (flag == "s"):
-        return "SELL"
-    raise BadRequest("Error with file format.")
-
-
-def format_date(date):
-    try:
-        datetime.strptime(date, "%Y-%m-%d")
-        return date
-    except:
-        raise BadRequest("Error with file format.")
-
-
-def test_stock_details(value, datatype):
-    if (datatype(value) > 0):
-        return datatype(value)
-    raise BadRequest("Error with file format.")
+from validators import format_date, buy_or_sell, test_stock_details, test_valid_file_name_and_extension
 
 
 def load_trading_data(trading_data):
@@ -72,7 +51,7 @@ def manually_enter_trade(trading_data):
                                   float)
         date_of_trade = format_date(input("Date:\t"))
         append_to_trading_data(trading_data,
-                     [date_of_trade, ticker, flag, quantity, cost])
+                               [date_of_trade, ticker, flag, quantity, cost])
         print_trade_details(date_of_trade, ticker, flag, quantity, cost)
         print("Trade added to system")
     except:
