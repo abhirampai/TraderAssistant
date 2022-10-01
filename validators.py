@@ -3,9 +3,9 @@ from constants import errors, date_format, trade_related_constants
 import time as datetime
 
 def buy_or_sell(flag):
-    if (flag == "b"):
+    if (flag.lower() == "b"):
         return trade_related_constants["buy"]
-    elif (flag == "s"):
+    elif (flag.lower() == "s"):
         return trade_related_constants["sell"]
     raise BadRequest(errors["invalid_file_format_expected_csv"])
 
