@@ -2,18 +2,7 @@ import csv
 import time as datetime
 import json
 from utils import read_file, test_valid_file_name_and_extension, print_trade_details, append_to_trading_data
-
-
-class BadRequest(Exception):
-
-    def __init__(self, message):
-        self.message = message
-
-        super().__init__(message)
-
-    def __str__(self):
-        return self.message
-
+from badrequest import BadRequest
 
 def buy_or_sell(flag):
     if (flag == "b"):

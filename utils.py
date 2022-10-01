@@ -1,3 +1,5 @@
+from badrequest import BadRequest
+
 def read_file():
     filename = input("Enter filename:")
     if not filename.strip():
