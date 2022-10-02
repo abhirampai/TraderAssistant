@@ -35,7 +35,7 @@ input_messages = {
   "flag": "Buy or sell (b/s): ",
   "quantity": "Quantity of stock: ",
   "cost": "Total cost(including brokerage): ",
-  "date_of_trade": "Date: (yyyy-mm-dd): ",
+  "date_of_trade": "Date (yyyy-mm-dd): ",
   "find_ticker": "Ticker (leave blank for all): ",
   "sort_date": "Sort dates in reverse chronological order? (y/n): ",
   "filename": "Enter filename: "
