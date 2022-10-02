@@ -70,6 +70,8 @@ def view_trading_data(trading_data):
             filtered_data for filtered_data in sorted_data
             if ticker in filtered_data
         ]
+    print('\nDATE OF TRADE\tTICKER\tFLAG\tQUANTITY\tCOST')
+    print('-' * 60)
     for [date_of_trade, ticker, flag, quantity, cost] in sorted_data:
         print_trade_details(date_of_trade, ticker, flag, quantity, cost)
 
