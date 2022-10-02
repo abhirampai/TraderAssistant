@@ -10,7 +10,7 @@ def main():
     while selected_menu != 7:
         try:
             print(menu)
-            selected_menu = int(input(">>>"))
+            selected_menu = int(input(">>> "))
             if selected_menu not in actions:
                 print(errors["invalid_selection"])
             else:

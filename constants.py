@@ -1,14 +1,14 @@
 welcome_message = """Welcome  to the Trader Assistant
 Programmed by <<Your Name>>"""
 
-menu = """Please choose from  the options below 
-1. Load trading data
-2. Load current stock prices
-3. Manually enter a new trade
-4. View trading data
-5. View current portfolio
-6. Save trading data
-7. Quit"""
+menu = """\nPlease choose from  the options below:
+  1. Load trading data
+  2. Load current stock prices
+  3. Manually enter a new trade
+  4. View trading data
+  5. View current portfolio
+  6. Save trading data
+  7. Quit"""
 
 date_format = "%Y-%m-%d"
 
@@ -31,14 +31,14 @@ success_messages = {
 }
 
 input_messages = {
-  "ticker": "Ticker:\t",
-  "flag": "Buy or sell (b/s):\t",
-  "quantity": "Quantity of stock:\t",
-  "cost": "Total cost(including brokerage):\t",
-  "date_of_trade": "Date:\t",
-  "find_ticker": "Ticker (leave blank for all):\t",
-  "sort_date": "Sort dates in reverse chronological order? (y/n)\t",
-  "filename": "Enter filename:"
+  "ticker": "Ticker: ",
+  "flag": "Buy or sell (b/s): ",
+  "quantity": "Quantity of stock: ",
+  "cost": "Total cost(including brokerage): ",
+  "date_of_trade": "Date: (yyyy-mm-dd): ",
+  "find_ticker": "Ticker (leave blank for all): ",
+  "sort_date": "Sort dates in reverse chronological order? (y/n): ",
+  "filename": "Enter filename: "
 }
 
 trade_related_constants = {
